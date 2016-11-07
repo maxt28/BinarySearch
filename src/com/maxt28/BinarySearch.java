@@ -7,10 +7,12 @@ public abstract class BinarySearch {
         int rightPosition = array.length - 1;
         int midPosition = array.length / 2;
         while (array[midPosition] != number) {
-            if ((array[midPosition] < array[rightPosition] &&
-                    ((number < array[midPosition]) ||
-                            (number > array[midPosition] && number > array[rightPosition]))) ||
-                    (number < array[midPosition] && number >= array[leftPosition])) {
+            if ((array[midPosition] < array[rightPosition] && number < array[midPosition])) {
+                rightPosition = midPosition - 1;
+            } else if (array[midPosition] < array[rightPosition] && number > array[midPosition] 
+                    && number > array[rightPosition]) {
+                rightPosition = midPosition - 1;
+            } else if (number < array[midPosition] && number >= array[leftPosition]) {
                 rightPosition = midPosition - 1;
             } else {
                 leftPosition = midPosition + 1;
